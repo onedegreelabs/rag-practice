@@ -18,7 +18,7 @@ class RAG:
         self.pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
         self.pc_idx = self.pc.Index(os.environ.get("PINECONE_INDEX_NAME"))
 
-        # 인덱스가 존재하지 않는 경우 생성
+        # Create the index if it does not exist
         if os.environ.get("PINECONE_INDEX_NAME") not in self.pc.list_indexes().names():
             self.pc.create_index(
                 name=os.environ.get("PINECONE_INDEX_NAME"),
@@ -45,7 +45,7 @@ class RAG:
             embedding=OpenAIEmbeddings(openai_api_key=os.environ.get("OPENAI_API_KEY"))
         )
 
-        # 출력 파서 정의
+        # Define output parser
         output_parser = JsonOutputParser(pydantic_object=ProfileListParser)
         format_instructions = output_parser.get_format_instructions()
 
@@ -74,7 +74,7 @@ class RAG:
         text_lines = [f"{key}: {value}" for key, value in data.items()]
         return ", ".join(text_lines)
     
-    # 프로필을 Pinecone에 업로드
+    # Upload profiles to Pinecone
     def upsert(self, profiles):
 
         for profile in tqdm(profiles):
@@ -97,7 +97,7 @@ class RAG:
                 namespace=os.environ.get("PINECONE_NAMESPACE")
             )
 
-    # LLM을 사용하여 질문에 대한 답변을 생성
+    # Generate answers to queries using the LLM
     def retrieve(self, query):
         try:
             retrieved = self.qa.invoke(query)['result']
