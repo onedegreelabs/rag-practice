@@ -29,13 +29,13 @@ PINECONE_NAMESPACE=ns1
 - Retrieval Mode
 
 ```bash
-python main.py          # retreival 모드
+python main.py          # retreival mode
 ```
 
 - DB Sync Mode
 
 ```bash
-python main.py --sync   # DB sync 모드
+python main.py --sync   # DB sync mode
 ```
 
 ### Profile Schema
