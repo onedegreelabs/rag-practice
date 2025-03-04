@@ -1,18 +1,18 @@
-### 환경 설정
+### Environment Setup
 
-- Python 버전
+- Python Version
 
 ```bash
 python=3.10.14
 ```
 
-- 라이브러리 설치
+- Installing Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-- 환경변수 (`.env` 파일 생성 필요)
+- Environment Variables (Requires a `.env` file)
 
 ```bash
 OPENAI_API_KEY=???
@@ -24,23 +24,23 @@ PINECONE_INDEX_NAME=glimpse
 PINECONE_NAMESPACE=ns1
 ```
 
-### 실행
+### Execution
 
-- Retreival 모드
+- Retrieval Mode
 
 ```bash
 python main.py          # retreival 모드
 ```
 
-- DB sync 모드
+- DB Sync Mode
 
 ```bash
 python main.py --sync   # DB sync 모드
 ```
 
-### Profile 스키마
+### Profile Schema
 
-스키마 고정된 것은 아님.
+The schema is not fixed.
 
 ```json
 {
